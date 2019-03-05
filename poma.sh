@@ -1,14 +1,23 @@
 #!/bin/bash
 
-
-
-# accept cmdline params
+# some functions
 
 usage()
 {
-    echo "usage: ./poma.sh [-c] <host>"
+    echo "usage: ./poma.sh [-c] [--html] <host>"
     echo "-c|--cookie run cookie scan to test for secure and httpOnly flags"
 }
+
+
+printSeperator()
+{
+    echo "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+    echo "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+    echo "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+}
+
+
+####
 
 if [ $# -lt 1 ]
 then
@@ -49,15 +58,16 @@ else
     geckodriver="`pwd`/geckodriver"
 fi
 
-echo $geckodriver
 
 ###
 
 
 if [ $cookie -eq 1 ]
 then
+    printSeperator
     echo "cookie scan starting on $host"
     python3 analyze_cookies.py $geckodriver $host
     echo "cookie scan done"
 fi
+
 
