@@ -34,9 +34,12 @@ usage: ./poma.sh [-c] [-p] <host>
 # Config File
 
 You can write a config file called poma.config which must be placed in
-the same directory as poma.sh. Currently there is only one option to
-be set in there:
+the same directory as poma.sh. Those are the options that can be set
+here:
 
 * geckodriver=/full/path/to/geckodriver/incl/binary (default: in the same directory as poma.sh)
+* dnsserver=<ip of dns server, e.g. 9.9.9.9> (default: system dns)
 
-If there is no config file, the script will fall back to defaults
+If there is no config file, the script will fall back to
+defaults. Same applies to options that are missing from the config
+file

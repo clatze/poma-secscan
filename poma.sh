@@ -62,16 +62,12 @@ CONFIG=poma.config
 if [ -f $CONFIG ]
 then
     . ./$CONFIG
-    if [ -z $geckodriver ]
-    then
-	echo "ERROR: config variable geckodriver not set"
-	exit 1
-    fi
-else
-    echo "no $CONFIG found, falling back to default values "
-    geckodriver="`pwd`/geckodriver"
 fi
 
+if [ -z $geckodriver ]
+then
+    geckodriver="`pwd`/geckodriver"
+fi
 
 ###
 
@@ -97,7 +93,12 @@ if [ $spf -eq 1 ]
 then
     printSeperator
     echo "checking for SPF record on $host"
-    dig txt $host | grep spf
+    if [ -z $dnsserver ]
+    then
+	dig txt $host | grep spf
+    else
+	dig @$dnsserver txt $host | grep spf
+    fi
     echo "checking for SPF record done"
 fi
 
