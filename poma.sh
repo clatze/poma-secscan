@@ -7,6 +7,7 @@ usage()
     echo "usage: ./poma.sh [-c] [-p] <host>"
     echo "-c|--cookie run cookie scan to test for secure and httpOnly flags"
     echo "-p|--ports run fast port scan"
+    echo "-s|--spf check for SPF record"
     echo "<host> the host such as www.microspot.ch (without the protocol such as http)"
 }
 
@@ -29,7 +30,7 @@ fi
 
 cookie=0
 ports=0
-
+spf=0
 
 
 for i in "${@}"
@@ -40,6 +41,9 @@ do
 	    ;;
 	-p|--ports)
 	    ports=1
+	    ;;
+	-s|--spf)
+	    spf=1
 	    ;;
 	*)
 	    if [ $i != ${!#} ] #there is certainly a better way to exclude host here
@@ -87,5 +91,13 @@ then
     echo "fast portscan starting on $host"
     nmap -F $host
     echo "fast portscan done"
+fi
+
+if [ $spf -eq 1 ]
+then
+    printSeperator
+    echo "checking for SPF record on $host"
+    dig txt $host | grep spf
+    echo "checking for SPF record done"
 fi
 
