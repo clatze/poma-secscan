@@ -33,7 +33,7 @@ usage: ./poma.sh [-c] [-p] <host>
 
 # Config File
 
-You can write a config file called poma.config which must be placed in
+You can write a config file called *poma.config* which must be placed in
 the same directory as poma.sh. Those are the options that can be set
 here:
 
