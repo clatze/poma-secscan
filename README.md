@@ -9,7 +9,7 @@ Following scans are currently supported:
 * cookie scan: scans for secure and httpOnly flags of cookies (using selenium to catch JS ones)
 * port scan: scans (fast) for common open ports
 
-``̀
+```
 usage: ./poma.sh [-c] [-p] <host>
 -c|--cookie run cookie scan to test for secure and httpOnly flags
 -p|--ports run fast port scan
