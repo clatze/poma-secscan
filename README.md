@@ -7,12 +7,17 @@ and give a first impression on the cyber hygiene of a web presence.
 Following scans are currently supported:
 
 * cookie scan: scans for secure and httpOnly flags of cookies (using selenium to catch JS ones)
+* port scan: scans (fast) for common open ports
 
 # Requirements
+
+## Cookie Scan (-c option)
 * python3
 * geckodriver from https://github.com/mozilla/geckodriver/releases
 * python3-selenium
 
+## Portscan (-p option)
+* nmap
 
 # Config File
 

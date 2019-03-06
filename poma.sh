@@ -4,8 +4,10 @@
 
 usage()
 {
-    echo "usage: ./poma.sh [-c] [--html] <host>"
+    echo "usage: ./poma.sh [-c] [-p] <host>"
     echo "-c|--cookie run cookie scan to test for secure and httpOnly flags"
+    echo "-p|--ports run fast port scan"
+    echo "<host> the host such as www.microspot.ch (without the protocol such as http)"
 }
 
 
@@ -19,17 +21,25 @@ printSeperator()
 
 ####
 
-if [ $# -lt 1 ]
+if [ $# -lt 2 ] # at least one option and a host
 then
     usage
     exit 1
 fi
+
+cookie=0
+ports=0
+
+
 
 for i in "${@}"
 do
     case $i in
 	-c|--cookie)
 	    cookie=1
+	    ;;
+	-p|--ports)
+	    ports=1
 	    ;;
 	*)
 	    if [ $i != ${!#} ] #there is certainly a better way to exclude host here
@@ -66,8 +76,16 @@ if [ $cookie -eq 1 ]
 then
     printSeperator
     echo "cookie scan starting on $host"
-    python3 analyze_cookies.py $geckodriver $host
+    python3 analyze_cookies.py $geckodriver "http://"$host
     echo "cookie scan done"
 fi
 
+
+if [ $ports -eq 1 ]
+then
+    printSeperator
+    echo "fast portscan starting on $host"
+    nmap -F $host
+    echo "fast portscan done"
+fi
 
