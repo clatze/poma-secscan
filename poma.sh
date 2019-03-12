@@ -8,6 +8,7 @@ usage()
     echo "-c|--cookie run cookie scan to test for secure and httpOnly flags"
     echo "-p|--ports run fast port scan"
     echo "-s|--spf check for SPF record"
+    echo "-t|--tls check for TLS settings"
     echo "<host> the host such as www.microspot.ch (without the protocol such as http)"
 }
 
@@ -31,7 +32,7 @@ fi
 cookie=0
 ports=0
 spf=0
-
+tls=0
 
 for i in "${@}"
 do
@@ -44,6 +45,9 @@ do
 	    ;;
 	-s|--spf)
 	    spf=1
+	    ;;
+	-t|--tls)
+	    tls=1
 	    ;;
 	*)
 	    if [ $i != ${!#} ] #there is certainly a better way to exclude host here
@@ -67,6 +71,11 @@ fi
 if [ -z $geckodriver ]
 then
     geckodriver="`pwd`/geckodriver"
+fi
+
+if [ -z $testssl_dir ]
+then
+    testssl_dir="`pwd`"
 fi
 
 ###
@@ -102,3 +111,10 @@ then
     echo "checking for SPF record done"
 fi
 
+if [ $tls -eq 1 ]
+then
+    printSeperator
+    echo "checking for TLS settings on $host"
+    $testssl_dir"/testssl.sh" $host
+    echo "checking for TLS settings done"
+fi

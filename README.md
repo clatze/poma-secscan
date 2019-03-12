@@ -15,6 +15,7 @@ usage: ./poma.sh [-c] [-p] <host>
 -c|--cookie run cookie scan to test for secure and httpOnly flags
 -p|--ports run fast port scan
 -s|--spf check for SPF record
+-t|--tls check for TLS settings
 <host> the host such as www.microspot.ch (without the protocol such as http)
 ```
 
@@ -31,6 +32,9 @@ usage: ./poma.sh [-c] [-p] <host>
 ## SPF check (-s option)
 * dig
 
+# TLS check (-t option)
+* testssl from https://testssl.sh
+
 # Config File
 
 You can write a config file called *poma.config* which must be placed in
@@ -39,6 +43,7 @@ here:
 
 * geckodriver=/full/path/to/geckodriver/incl/binary (default: in the same directory as poma.sh)
 * dnsserver=<ip of dns server, e.g. 9.9.9.9> (default: system dns)
+* testssl_dir=/full/path/where/testssl.sh/is/located (default: the same directory where poma.sh is located)
 
 If there is no config file, the script will fall back to
 defaults. Same applies to options that are missing from the config
