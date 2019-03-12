@@ -9,6 +9,7 @@ Following scans are currently supported:
 * cookie scan: scans for secure and httpOnly flags of cookies (using selenium to catch JS ones)
 * port scan: scans (fast) for common open ports
 * spf record: check if spf record is set for domain
+* TLS settings: scans for certificate validity as well as common TLS settings especially those related to well known (and famous) attacks
 
 ```
 usage: ./poma.sh [-c] [-p] <host>
