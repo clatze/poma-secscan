@@ -27,7 +27,7 @@ for cookie in cookies_list:
         print("WARN!!!!!! httpOnly set to False")
     if cookie['secure'] == False:
         print("WARN!!!!!! secure set to False")
-    print (cookie['name'],cookie['value'],cookie['httpOnly'],cookie['secure'])
+    print (cookie['name'],cookie['value'],cookie['httpOnly'],cookie['secure'],cookie['domain'])
     
     print("***")
 
