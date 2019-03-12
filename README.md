@@ -32,7 +32,7 @@ usage: ./poma.sh [-c] [-p] <host>
 ## SPF check (-s option)
 * dig
 
-# TLS check (-t option)
+## TLS check (-t option)
 * testssl from https://testssl.sh
 
 # Config File
