@@ -34,6 +34,7 @@ usage: ./poma.sh [-c] [-p] <host>
 
 ## TLS check (-t option)
 * testssl from https://testssl.sh
+* sslyze
 
 # Config File
 

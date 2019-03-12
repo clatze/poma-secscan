@@ -115,6 +115,10 @@ if [ $tls -eq 1 ]
 then
     printSeperator
     echo "checking for TLS settings on $host"
+    echo "part 1: testssl"
     $testssl_dir"/testssl.sh" $host
+    echo "+++++++++++++++++++++++"
+    echo "part 2: sslyze"
+    sslyze --regular $host
     echo "checking for TLS settings done"
 fi
