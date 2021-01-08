@@ -6,12 +6,25 @@ and give a first impression on the cyber hygiene of a web presence.
 
 This version focuses on very simple Powershell scripts and commands that should be available everywhere.
 
-Scan for an open port:
+## Scan for an open port:
 
 ```
 Test-NetConnection -ComputerName <host> -Port <port>
 ```
 Corporate networks might only allow 80 and 443 to pass no matter which ports are really open on the other side.
+
+## Analyse headers
+
+```
+$r = Invoke-WebRequest <host>
+$r.Headers
+$r.BaseResponse
+$r.Forms
+$r.Images
+$r.InputFields
+$r.Links
+$r.StatusCode
+```
 
 # TODO
 
