@@ -119,6 +119,6 @@ then
     $testssl_dir"/testssl.sh" $host
     echo "+++++++++++++++++++++++"
     echo "part 2: sslyze"
-    sslyze --regular $host
+    python -m sslyze --regular $host
     echo "checking for TLS settings done"
 fi
