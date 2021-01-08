@@ -6,7 +6,7 @@ and give a first impression on the cyber hygiene of a web presence.
 
 This version focuses on very simple Powershell scripts and commands that should be available everywhere.
 
-## Scan for an open port:
+## Scan for an open port
 
 ```
 Test-NetConnection -ComputerName <host> -Port <port>
@@ -24,6 +24,12 @@ $r.Images
 $r.InputFields
 $r.Links
 $r.StatusCode
+```
+## DNS Records
+
+```
+Resolve-DnsName -Name <host>
+Resolve-DnsName -Name <host> -Type TXT
 ```
 
 # TODO
